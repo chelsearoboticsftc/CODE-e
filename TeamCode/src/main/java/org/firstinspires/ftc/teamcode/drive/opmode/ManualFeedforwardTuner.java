@@ -94,7 +94,6 @@ public class ManualFeedforwardTuner extends LinearOpMode {
         MotionProfile activeProfile = generateProfile(true);
         double profileStart = clock.seconds();
 
-
         while (!isStopRequested()) {
             telemetry.addData("mode", mode);
 
@@ -145,6 +144,7 @@ public class ManualFeedforwardTuner extends LinearOpMode {
                                     -gamepad1.right_stick_x
                             )
                     );
+
                     break;
             }
 
