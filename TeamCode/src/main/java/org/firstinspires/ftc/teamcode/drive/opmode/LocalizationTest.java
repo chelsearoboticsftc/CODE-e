@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
+import org.firstinspires.ftc.teamcode.drive.DriveConstants;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 
 /**
@@ -27,18 +28,29 @@ public class LocalizationTest extends LinearOpMode {
         while (!isStopRequested()) {
             drive.setWeightedDrivePower(
                     new Pose2d(
-                            gamepad1.left_stick_y*0.5,
-                            gamepad1.left_stick_x*0.5,
+                            -gamepad1.left_stick_y,
+                            -gamepad1.left_stick_x,
                             gamepad1.right_stick_x*0.5
                     )
             );
 
             drive.update();
+            drive.updatePoseEstimate();
 
             Pose2d poseEstimate = drive.getPoseEstimate();
+            Pose2d poseVelocity = drive.getPoseVelocity();
+            double currentXVelocity = poseVelocity.getX();
+            double currentYVelocity = poseVelocity.getY();
+
             telemetry.addData("x", poseEstimate.getX());
             telemetry.addData("y", poseEstimate.getY());
             telemetry.addData("heading", poseEstimate.getHeading());
+            telemetry.addData("Commanded X Velocity",
+                    DriveConstants.rpmToVelocity(-gamepad1.left_stick_y*DriveConstants.MAX_RPM));
+            telemetry.addData("Commanded Y Velocity",
+                    DriveConstants.rpmToVelocity(-gamepad1.left_stick_x*DriveConstants.MAX_RPM));
+            telemetry.addData("Measured X Velocity", currentXVelocity);
+            telemetry.addData("Measured Y Velocity", currentYVelocity);
             telemetry.update();
         }
     }

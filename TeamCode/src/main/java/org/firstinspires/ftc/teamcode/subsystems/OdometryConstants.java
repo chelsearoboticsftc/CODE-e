@@ -15,4 +15,7 @@ public class OdometryConstants {
                                                     OctoQuadBase.EncoderDirection.FORWARD;
     public static final OctoQuadBase.EncoderDirection ODO_CENTER_DIRECTION =
                                                     OctoQuadBase.EncoderDirection.FORWARD;
+
+    public static final int    VELOCITY_SAMPLE_INTERVAL_MS = 25;   // To provide 40 updates per second.
+    public static final double VELOCITY_SAMPLES_PER_S = (1000.0 / VELOCITY_SAMPLE_INTERVAL_MS);
 }
