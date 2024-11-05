@@ -9,6 +9,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.drive.DriveConstants;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
+import org.firstinspires.ftc.teamcode.subsystems.Elevator;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequenceBuilder;
 
@@ -17,6 +18,7 @@ public class SmurfNeutSamplesBlue extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         SampleMecanumDrive drivetrain = new SampleMecanumDrive(hardwareMap);
+        Elevator elevator = new Elevator(hardwareMap);
 
         Pose2d startingPose = new Pose2d(39.5,62,Math.toRadians(270));
         Vector2d wayPoint1 = new Vector2d(34,24);
@@ -49,7 +51,8 @@ public class SmurfNeutSamplesBlue extends LinearOpMode {
                 .back(10)
                 .strafeLeft(15)
                 //Park!
-                .splineToLinearHeading(parkPosition,0) 
+                .splineToLinearHeading(parkPosition,0)
+                .addTemporalMarker(()-> elevator.setElevatorPosition(500))
                 .build();
 
         waitForStart();
