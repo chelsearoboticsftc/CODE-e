@@ -8,11 +8,11 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 final class ElevatorConstants {
     final static DcMotor.ZeroPowerBehavior ZERO_POWER_MODE = DcMotor.ZeroPowerBehavior.BRAKE;
     final static DcMotorSimple.Direction MOTOR_DIRECTION = DcMotorSimple.Direction.FORWARD;
-    final static double VELOCITY_P = 0.0;
-    final static double VELOCITY_I = 0.0;
+    final static double VELOCITY_P = 5.285;
+    final static double VELOCITY_I = 0.5285;
     final static double VELOCITY_D = 0.0;
-    final static double VELOCITY_F = 0.0;
-    final static double POSITION_P = 0.0;
+    final static double VELOCITY_F = 52.85;
+    final static double POSITION_P = 5.0;
 }
 
 public class Elevator{
