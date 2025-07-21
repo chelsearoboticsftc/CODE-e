@@ -10,7 +10,7 @@ public class Matthew_Danny extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         SampleMecanumDrive drivetrain = new SampleMecanumDrive(hardwareMap);
         waitForStart();
-        frontLeft.setPower
+        frontLeft.setPower()
     }
 }
 
