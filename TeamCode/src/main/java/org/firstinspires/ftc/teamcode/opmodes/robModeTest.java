@@ -12,7 +12,7 @@ public class robModeTest extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
-        new ElapsedTime()
+        new ElapsedTime();
         motor1 = hardwareMap.get(DcMotor.class, "motorTest");
         telemetry.addData("Status", "Initialize");
         telemetry.update();
