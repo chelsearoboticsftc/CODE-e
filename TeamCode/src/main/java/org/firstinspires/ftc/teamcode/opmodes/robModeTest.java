@@ -1,28 +1,28 @@
 package org.firstinspires.ftc.teamcode.opmodes;
 
+
+
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import org.firstinspires.ftc.teamcode.subsystems.RobDrive;
+
 
 
 @TeleOp(name = "Rob's Test")
 public class robModeTest extends LinearOpMode {
-    private DcMotor motor1 = null;
-
+    ElapsedTime driveTimer = new ElapsedTime();
+    RobDrive driveCommands = new RobDrive();
     @Override
     public void runOpMode() throws InterruptedException {
-        new ElapsedTime();
-        motor1 = hardwareMap.get(DcMotor.class, "motorTest");
-        telemetry.addData("Status", "Initialize");
-        telemetry.update();
         waitForStart();
-        telemetry.addData("Status", "Started");
-        telemetry.update();
-        motor1.setPower(0.5);
-        sleep(1000);
-        motor1.setPower(0);
-        telemetry.addData("Status", "Stopped");
-        telemetry.update();
+        driveTimer.reset();
+        driveCommands.driveInit();
+        while(opModeIsActive() == true) {
+            sleep(10);
+            driveCommands.driveUpdate();
+            telemetry.addData("Timer = ", driveTimer.seconds());
+            telemetry.update();
+        }
     }
 }
