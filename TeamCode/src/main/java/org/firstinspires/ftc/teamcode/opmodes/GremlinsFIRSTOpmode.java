@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.opmodes;
 
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -10,13 +11,8 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 
-@Autonomous
-public void  runOpMode(){
-    sampleMecanumDrive drivetrain = new SampleMecanumDrive(hardwareMap);
 
-    waitForStart();
-}
-@TeleOp
+@Disabled
 public class GremlinsFIRSTOpmode extends LinearOpMode {
     private DcMotor frontLeft = null;
     private DcMotor frontRight = null;
@@ -93,8 +89,6 @@ public class GremlinsFIRSTOpmode extends LinearOpMode {
             telemetry.addData("BLspeed", speeds[3]);
 
 
-
-            telemetry.update();
         }
     }
 }
