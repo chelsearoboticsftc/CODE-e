@@ -10,7 +10,7 @@ public class Connor extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         waitForStart();
         while(opModeIsActive()) {
-            telemetry.addData("Left stick", gamepad2.left_stick_x);
+            telemetry.addData("Left the stick", gamepad2.left_stick_x);
             telemetry.update();
             sleep(1000);
 
